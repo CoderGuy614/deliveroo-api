@@ -44,7 +44,7 @@ router.get("/:id", (req, res) => {
 
   restaurants
     .findById(req.params.id)
-    .populate("menus categories")
+    .populate("menu categories")
     .lean()
     .then(dat => {
       dat.avg = getAveragePrice(dat.menu);
