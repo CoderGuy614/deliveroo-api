@@ -9,15 +9,12 @@ const app = express()
 const database = require('./database')
 
 // Middleware
-
+//
 app.use(cors())
 
 // Routes
 
-app.use('/houses', require('./controllers/houses'))
-app.use('/types', require('./controllers/types'))
-app.use('/amenities', require('./controllers/amenities'))
-app.use('/reviews', require('./controllers/reviews'))
+// app.use('/restaurants', require('./controllers/restaurants'))
 
 // Start
 
