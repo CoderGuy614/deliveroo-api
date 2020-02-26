@@ -2,11 +2,7 @@ const mongoose = require("mongoose");
 const ObjectId = mongoose.Schema.Types.ObjectId;
 
 module.exports = mongoose.model("restaurants", {
-  images: [String],
-  title: {
-    type: String,
-    required: [true, "4 images are required"]
-  },
+  photos: [String],
   name: {
     type: String,
     required: [true, "name is required"]
@@ -19,7 +15,7 @@ module.exports = mongoose.model("restaurants", {
     type: Number,
     required: [true, "likes are required"]
   },
-  time: {
+  deliveryTime: {
     type: Number,
     required: [true, "delivery time is required"]
   },
