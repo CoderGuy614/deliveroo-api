@@ -3,10 +3,12 @@
 //Restaurants
 const categories = require("../models/categories");
 const restaurants = require("../models/restaurants");
+const menus = require("../models/menus");
 
 const router = require("express").Router();
 
 const getAveragePrice = menu => {
+  console.log(menu);
   let sumPrice = 0;
   let counter = 0;
   menu.menuCategories.forEach(el => {
@@ -23,16 +25,18 @@ router.get("/", (req, res) => {
   //send it to the main page
   restaurants
     .find({})
-    .populate("menus categories")
+    .populate("menu categories")
     .lean()
     .then(dat => {
-      console.log(dat);
       dat.forEach(el3 => {
         el3.avg = getAveragePrice(el3.menu);
       });
-      res.send(dat.data);
+      res.send(dat);
     })
-    .catch(() => res.send([]));
+    .catch(e => {
+      console.log(e);
+      res.send([]);
+    });
 });
 
 router.get("/:id", (req, res) => {
@@ -43,10 +47,11 @@ router.get("/:id", (req, res) => {
     .populate("menus categories")
     .lean()
     .then(dat => {
-      dat.data.avg = getAveragePrice(dat.data.menu);
+      dat.avg = getAveragePrice(dat.menu);
 
-      res.send(dat.data);
-    });
+      res.send(dat);
+    })
+    .catch(() => res.send([]));
 });
 
 router.post("/", (req, res) => {
