@@ -15,7 +15,18 @@ const getAveragePrice = (options) => {
       counter++;
     });
   });
-  return sumPrice / counter;
+  let average = sumPrice / counter;
+  return average;
+};
+
+const getMinPrice = (options) => {
+  let prices = [];
+  options.productOptions.forEach((el) => {
+    el.items.forEach((el2) => {
+      prices.push(el2.price);
+    });
+  });
+  return prices.sort((a, b) => a - b)[0];
 };
 
 router.get("/", (req, res) => {
@@ -28,6 +39,7 @@ router.get("/", (req, res) => {
     .then((data) => {
       data.forEach((product) => {
         product.avg = getAveragePrice(product.options);
+        product.minPrice = getMinPrice(product.options);
       });
       res.send(data);
     });
