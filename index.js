@@ -22,7 +22,6 @@ app.use(cors());
 
 app.use("/products", require("./controllers/products.js"));
 app.use("/categories", require("./controllers/categories.js"));
-app.use("/options", require("./controllers/options.js"));
 
 // Start
 

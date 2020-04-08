@@ -26,7 +26,25 @@ module.exports = mongoose.model("products", {
     required: [true, "delivery time is required"],
   },
   options: {
-    type: ObjectId,
-    ref: "options",
+    productOptions: [
+      {
+        name: {
+          type: String,
+          required: [true, "name is required"],
+        },
+        items: [
+          {
+            name: {
+              type: String,
+              required: [true, "name is required"],
+            },
+            price: {
+              type: Number,
+              required: [true, "price is required"],
+            },
+          },
+        ],
+      },
+    ],
   },
 });

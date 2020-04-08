@@ -3,7 +3,7 @@
 //products
 const categories = require("../models/categories");
 const products = require("../models/products");
-const options = require("../models/options");
+// const options = require("../models/options");
 const router = require("express").Router();
 
 const getAveragePrice = (options) => {
@@ -23,7 +23,7 @@ router.get("/", (req, res) => {
   //send it to the main page
   products
     .find({})
-    .populate("options categories")
+    .populate("categories")
     .lean()
     .then((data) => {
       data.forEach((product) => {
@@ -36,7 +36,7 @@ router.get("/", (req, res) => {
 router.get("/:id", (req, res) => {
   products
     .findById(req.params.id)
-    .populate("options categories")
+    .populate("categories")
     .lean()
     .then((dat) => res.send(dat));
 });
