@@ -20,7 +20,7 @@ app.use(cors());
 
 // Routes
 
-app.use("/products", require("./controllers/products.js"));
+app.use("/restaurants", require("./controllers/restaurants.js"));
 app.use("/categories", require("./controllers/categories.js"));
 
 // Start

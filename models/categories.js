@@ -3,10 +3,10 @@ const mongoose = require("mongoose");
 module.exports = mongoose.model("categories", {
   name: {
     type: String,
-    required: [true, "name is required"]
+    required: [true, "name is required"],
   },
   color: {
     type: String,
-    required: [true, "color is required"]
-  }
+    required: [true, "color is required"],
+  },
 });

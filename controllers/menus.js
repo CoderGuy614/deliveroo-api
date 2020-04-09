@@ -1,10 +1,10 @@
 const router = require("express").Router();
-const categories = require("../models/categories");
+const menus = require("../models/menus.js");
 
 router.get("/", (req, res) => {
   //Return an array of the categories of restaurant, such as Italian, Veg etc.
 
-  categories
+  menus
     .find({})
     .then((dat) => {
       res.send(dat);
@@ -13,11 +13,12 @@ router.get("/", (req, res) => {
 });
 router.post("/", (req, res) => {
   //read data from the body of the request and post it here.
-  categories
+  menus
     .create(req.body)
     .then((dat) => {
       res.send(dat);
     })
     .catch((err) => res.send(err));
 });
+
 module.exports = router;
